@@ -33,7 +33,7 @@ EventFish.prototype.addWatchList = function(eventType, selector, handler){
     if (item.selector == selector){
       this.warn('duplicate selector of the same event detected')
     }
-  })
+  }.bind(this))
   this.watchList[eventType].push({
     selector: selector,
     handler: handler

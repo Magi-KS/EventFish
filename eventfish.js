@@ -15,11 +15,9 @@ EventFish.prototype.warn = function(subject){
 
 EventFish.prototype.watchHandler = function(eventObject){
   this.watchList[eventObject.type].forEach(function scanWatchList(watchItem){
-    this.rootElement.querySelectorAll(watchItem.selector).forEach(function matchWatchItem(possibleItem){
-      if (possibleItem == eventObject.target){
-        watchItem.handler(eventObject)
-      }
-    }.bind(this))
+    if (this.elementMatchesSelector(eventObject.target, watchItem.selector)){
+      watchItem.handler(eventObject)
+    }
   }.bind(this))
 }
 
@@ -38,4 +36,27 @@ EventFish.prototype.addWatchList = function(eventType, selector, handler){
     selector: selector,
     handler: handler
   })
+}
+
+// encapsulated polyfill for Element.matches
+// adapted from MDN https://developer.mozilla.org/en-US/docs/Web/API/Element/matches
+EventFish.prototype.elementMatchesSelector = function(element, selector){
+  if (!Element.prototype.matches){
+    Element.prototype.matches =
+      Element.prototype.matchesSelector ||
+      Element.prototype.mozMatchesSelector ||
+      Element.prototype.msMatchesSelector ||
+      Element.prototype.oMatchesSelector ||
+      Element.prototype.webkitMatchesSelector
+  }
+
+  if(Element.prototype.matches){
+    return element.matches(selector)
+  }
+  else{ //worst case fall back, unable to capture lements removed from DOM
+    var matches = (this.document || this.ownerDocument).querySelectorAll(s),
+        i = matches.length;
+    while (--i >= 0 && matches.item(i) !== this) {}
+    return i > -1;
+  }
 }

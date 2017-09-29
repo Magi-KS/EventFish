@@ -1,0 +1,10 @@
+{
+  "name": "EventFish",
+  "version": "0.1.0",
+  "description": "cast your net on a root element and fish for events",
+  "main": "eventfish.js",
+  "repository": "git@github.com:Magi-KS/EventFish.git",
+  "author": "KS <kangsheng@mindvalley.com>",
+  "license": "MIT",
+  "private": false
+}

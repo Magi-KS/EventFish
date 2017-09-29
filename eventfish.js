@@ -1,3 +1,5 @@
+module.export = EventFish
+
 EventFish = function(element, options = {}){
   Object.defineProperty(this, 'rootElement', {
     value: element,
@@ -55,8 +57,8 @@ EventFish.prototype.elementMatchesSelector = function(element, selector){
   }
   else{ //worst case fall back, unable to capture lements removed from DOM
     var matches = (this.document || this.ownerDocument).querySelectorAll(s),
-        i = matches.length;
+        i = matches.length
     while (--i >= 0 && matches.item(i) !== this) {}
-    return i > -1;
+    return i > -1
   }
 }

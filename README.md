@@ -9,7 +9,12 @@ net.addWatchList('click', 'div.capture', function(e){
 })
 
 net.addWatchList('click', 'a.capture', function(e){
+  // this will fail silently because passive listener by default
+  // for performance reason
   e.preventDefault()
-  console.log('this a got clicked and prevented default')
+  console.log('this a got clicked and preventDefault ignored')
 })
+
+// to preventDefault
+new EventFish(document.body, {passive: false})
 ```

@@ -61,4 +61,4 @@ EventFish.prototype.elementMatchesSelector = function(element, selector){
   }
 }
 
-module.export = EventFish
+module.exports = EventFish

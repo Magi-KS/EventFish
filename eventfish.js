@@ -1,6 +1,4 @@
-module.export = EventFish
-
-EventFish = function(element, options = {}){
+var EventFish = function(element, options = {}){
   Object.defineProperty(this, 'rootElement', {
     value: element,
     writable: false
@@ -62,3 +60,5 @@ EventFish.prototype.elementMatchesSelector = function(element, selector){
     return i > -1
   }
 }
+
+module.export = EventFish

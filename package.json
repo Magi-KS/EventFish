@@ -1,6 +1,6 @@
 {
   "name": "eventfish",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "cast your net on a root element and fish for events",
   "main": "eventfish.js",
   "repository": "git@github.com:Magi-KS/EventFish.git",

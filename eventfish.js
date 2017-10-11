@@ -1,4 +1,7 @@
-var EventFish = function(element, options = {}){
+var EventFish = function(element, options){
+  if (options == undefined){
+    options = {}
+  }
   Object.defineProperty(this, 'rootElement', {
     value: element,
     writable: false
